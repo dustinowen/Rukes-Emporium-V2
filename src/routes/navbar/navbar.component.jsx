@@ -1,12 +1,26 @@
-import { Outlet } from "react-router-dom";
+import { Fragment } from "react";
+import { Outlet, Link } from "react-router-dom"; 
+
+
+import './navbar.styles.scss'
+
 
 const NavBar = () => {
-    return (
-      <div>
-        <h1>I am the NAV BAR</h1>
-        <Outlet />
+  return (
+    <Fragment>
+      <div className='navigation'>
+        <Link className='logo-container' to="/">
+          LOGO
+        </Link>
+        <div className="nav-links-container">
+          <Link className='nav-link' to="/shop">
+            SHOP
+          </Link>
+        </div>
       </div>
-    );
+        <Outlet />
+    </Fragment>
+  );
 };
-  
+
 export default NavBar;
