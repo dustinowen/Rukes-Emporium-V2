@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
@@ -7,10 +7,10 @@ import { signInUserWithEmailAndPassword } from "../../utils/firebase/firebase.ut
 
 import {
   createUserDocFromAuth,
-  signInWithGoogle
+  signInWithGoogle,
 } from "../../utils/firebase/firebase.utils";
 
-import './sign-in-form.styles.scss'
+import "./sign-in-form.styles.scss";
 
 const defaultFormFields = {
   email: "",
@@ -26,28 +26,30 @@ const SignInForm = () => {
   };
 
   const googleSignIn = async () => {
-    const { user } = await signInWithGoogle()
-    await createUserDocFromAuth(user)
-  }
+    await signInWithGoogle();
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await signInUserWithEmailAndPassword(email, password)
-      console.log(response)
+      const { user } = await signInUserWithEmailAndPassword(email, password);
 
       resetFormFields();
     } catch (error) {
       switch (error.code) {
-        case 'auth/too-many-requests':
-          alert('Access to this account has been temporarily disabled due to multiple failed login attempts. You can immediately restore it by resetting your password or you can try again later.')
-          break
-        case 'auth/invalid-login-credentials':
-          alert('Incorrect credentials - please check your username and password and try again.')
-          break
+        case "auth/too-many-requests":
+          alert(
+            "Access to this account has been temporarily disabled due to multiple failed login attempts. You can immediately restore it by resetting your password or you can try again later."
+          );
+          break;
+        case "auth/invalid-login-credentials":
+          alert(
+            "Incorrect credentials - please check your username and password and try again."
+          );
+          break;
         default:
-          console.log(error)
+          console.log(error);
       }
     }
   };
@@ -63,7 +65,6 @@ const SignInForm = () => {
       <span>Sign Up With Your Email + Password</span>
 
       <form onSubmit={handleSubmit}>
-
         <FormInput
           label="Email"
           type="email"
@@ -83,8 +84,10 @@ const SignInForm = () => {
         />
 
         <div className="buttons-container">
-        <Button type="submit">Sign In</Button>
-          <Button buttonType="google" onClick={googleSignIn}>Google Sign In</Button>
+          <Button type="submit">Sign In</Button>
+          <Button type="button" buttonType="google" onClick={googleSignIn}>
+            Google Sign In
+          </Button>
         </div>
       </form>
     </div>

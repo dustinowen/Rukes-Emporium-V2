@@ -1,21 +1,15 @@
-import { signInWithGoogle, createUserDocFromAuth } from '../../utils/firebase/firebase.utils'
-
-import SignUpForm from '../../components/sign-up-form/sign-up-form.component'
-import SignInForm from '../../components/sign-in-form/sign-in-form.component'
+import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
+import SignInForm from "../../components/sign-in-form/sign-in-form.component";
+import './authentication.styles.scss'
 
 const Authentication = () => {
-    const logGoogleUser = async () => {
-        const { user } = await signInWithGoogle()
-        const userDocRef = await createUserDocFromAuth(user)
-    }
 
-    return (
-        <div>
-            <h1>Sign in page</h1>
-            <SignInForm />
-            <SignUpForm />
-        </div>
-    )
-}
+  return (
+    <div className="authentication-container">
+      <SignInForm />
+      <SignUpForm />
+    </div>
+  );
+};
 
-export default Authentication
+export default Authentication;
