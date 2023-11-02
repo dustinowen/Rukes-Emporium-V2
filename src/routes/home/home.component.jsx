@@ -31,11 +31,11 @@ function Home() {
     },
   ];
 
-    return (
-      <div>
-            <Outlet />
-            <CategoryMenu categories={categories} />
-      </div>
+  return (
+    <div>
+      <Outlet />
+      <CategoryMenu categories={categories} />
+    </div>
   );
 }
 

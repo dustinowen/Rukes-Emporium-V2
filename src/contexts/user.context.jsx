@@ -15,9 +15,7 @@ export const UserProvider = ({ children }) => {
             if (user) {
                 createUserDocFromAuth(user);
             }
-            setCurrentUser(user)
-            console.log(user)
-            
+            setCurrentUser(user)            
         })
         return unsubscribe
     }, [])

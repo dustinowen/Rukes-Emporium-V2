@@ -4,6 +4,7 @@ import LOGO from "../../assets/imgs/RE_logo.png";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import "./navbar.styles.scss";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
 
 const NavBar = () => {
   const { currentUser } = useContext(UserContext);
@@ -19,12 +20,15 @@ const NavBar = () => {
             SHOP
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>SIGN OUT</span>
+            <span className="nav-link" onClick={signOutUser}>
+              SIGN OUT
+            </span>
           ) : (
             <Link className="nav-link" to="/auth">
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
       </div>
       <Outlet />
