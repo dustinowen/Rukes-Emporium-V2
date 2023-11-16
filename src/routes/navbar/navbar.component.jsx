@@ -20,7 +20,7 @@ const NavBar = () => {
         </Link>
         <div className="nav-links-container">
           <Link className="nav-link" to="/shop">
-            SHOP
+            ALL PRODUCTS
           </Link>
           {currentUser ? (
             <span className="nav-link" onClick={signOutUser}>
