@@ -18,6 +18,7 @@ const NavBar = () => {
         <Link className="logo-container" to="/">
           <img src={LOGO} style={{ height: "70px" }} />
         </Link>
+        <span className="ruke-title">Welcome to Ruke's Emporium!</span>
         <div className="nav-links-container">
           <Link className="nav-link" to="/shop">
             ALL PRODUCTS
