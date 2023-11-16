@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./directory-item.styles.scss";
 
 const DirectoryItem  = ({ category }) => {
@@ -9,11 +10,11 @@ const DirectoryItem  = ({ category }) => {
         className="background-image"
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
-      <div className="body">
+      <Link className="body" to={`shop/${title}`}>
         <h2>{title}</h2>
         <p>Shop Now</p>
+      </Link>
       </div>
-    </div>
   );
 };
 
